@@ -16,13 +16,20 @@
             "outputPath": "dist/part-store-angular-project",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills":"src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
+            "allowedCommonJsDependencies": [
+              "xml2js"
+            ],
             "styles": [
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/@gds/prime-ng/resources/themes/gm/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -90,6 +97,7 @@
               "src/assets"
             ],
             "styles": [
+
               "src/styles.css"
             ],
             "scripts": []

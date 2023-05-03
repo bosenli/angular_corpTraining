@@ -1,0 +1,28 @@
+<p-dialog [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true">
+  <form>
+    <div>
+      <hr class="border-1 border-gray-400">
+      <div class="card">
+
+        <div class="field grid">
+          <h5 class="col-12">First Name</h5>
+          <gm-form-field class="col-12" label="Select JNDI">
+
+          </gm-form-field>
+
+        </div>
+
+      </div>
+      <hr class="border-1 border-gray-400">
+
+      <footer class="pt-2">
+        <div class="flex justify-content-end">
+          <p-button gmSecondary class="p-1"  styleClass="p-button-danger">Cancel</p-button>
+          <p-button gmSecondary class="p-1" >Save Changes</p-button>
+        </div>
+      </footer>
+    </div>
+  </form>
+
+</p-dialog>
+

@@ -1,0 +1,46 @@
+<p-confirmDialog
+  [style]="{width: '50vw'}"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-outlined"
+  acceptIcon=""
+  rejectIcon=""></p-confirmDialog>
+
+<h5>User Table</h5>
+<app-edit-user></app-edit-user>
+<gm-sticky-table #simpleTable [columns]="userTableColumns"
+                      [reorderableColumns]="true"
+                      [rowsPerPageOptions]="[10 ,25, 50, 100, {showAll: 'All'}]"
+                      [rows]="10"
+                      [value]="usertable"
+                      [checkBoxColumn]=false
+                      [actionColumn]=true
+                      actionColumnWidth="12.75rem"
+                      actionColumnHeader="Actions"
+                      emptyMessage="No records found..."
+                      recordStatus="Total Records {totalRecords}"
+                 columnResizeMode="expand">
+
+  <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body">
+    <tr>
+      <td *ngFor="let column of columns" [ngStyle]="{flex: column.flexWidth}" gmColumnFrozen [id]="column.id"
+          [alignFrozen]="column.alignFrozen" [frozen]="column.frozen">
+        <span class="p-column-title">{{column.mobileHeader}}</span>
+        <span [id]="'table-cell-' + column.id + '-' + rowIndex">{{
+          column.isValid ? (rowData.valid ? 'Valid': 'Invalid') : getField(rowData,column.fields[0])}}</span>
+      </td>
+
+      <td gmColumnFrozen alignFrozen="right" [ngStyle]="{flex: actionWidth}">
+
+        <p-button gmAction [id]="'table-edit-button-' + rowIndex" icon="pi pi-pencil" title="Edit" (click)="onEditUserRow(rowData)"></p-button>
+
+        <p-button gmAction [id]="'table-delete-button-' + rowIndex" icon="pi pi-trash" title="Delete" styleClass="p-button-danger"  (onClick)="onUserDelete(rowData)"></p-button>
+
+        <p-button gmAction ></p-button>
+      </td>
+
+    </tr>
+  </ng-template>
+</gm-sticky-table>
+<p-toast></p-toast>
+
+

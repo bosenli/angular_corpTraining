@@ -1,0 +1,22 @@
+<p-toolbar gmApplication>
+  <div class="ui-toolbar-group-left">
+
+    <gm-app-title
+      id="app-title"
+      name="PART STORE"
+      logoAlt="General Motors Logo"
+      logoSrc="../assets/gm-brandmark.svg">
+    </gm-app-title>
+  </div>
+
+  <div class="ui-toolbar-group-right">
+
+    <p-chip [label]="userName" styleClass="my-chip" ></p-chip>
+
+
+    <gm-user-menu  id="usermenu1" [model]="items" label="GM Corp" styleClass="mr-2"></gm-user-menu>
+
+  </div>
+</p-toolbar>
+
+<gm-navbar styleClass="Navbar" [navItems]="navigationItems"></gm-navbar>

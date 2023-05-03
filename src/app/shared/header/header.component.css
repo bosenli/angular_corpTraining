@@ -1,0 +1,21 @@
+navbar{
+  background-color: blue;
+  color: black;
+}
+span {
+  color: black;
+}
+.row:after{
+  content:"";
+  display: table;
+  clear: both;
+}
+.title {
+  float: left;
+  width: 50%;
+}
+
+:host ::ng-deep .p-chip.my-chip {
+  background-color: white;
+  color: black;
+}

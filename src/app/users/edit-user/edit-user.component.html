@@ -1,0 +1,49 @@
+
+<p-dialog header="Edit User {{userId}}" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
+  <form>
+    <div>
+      <div class="card">
+
+        <div class="field grid">
+
+          <label class="table-form-label">First Name</label>
+          <gm-form-field class="col-12" label="First Name">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Last Name</label>
+          <gm-form-field class="col-12" label="Last Name">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Email</label>
+          <gm-form-field class="col-12" label="Email">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Password</label>
+          <gm-form-field class="col-12" label="Password">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Company</label>
+          <gm-form-field class="col-12" label="Company">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+
+        </div>
+
+      </div>
+
+
+      <footer class="pt-2">
+        <div class="flex justify-content-end">
+          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()">Cancel</p-button>
+          <p-button gmSecondary class="p-1" >Save Changes</p-button>
+        </div>
+      </footer>
+    </div>
+  </form>
+
+</p-dialog>
