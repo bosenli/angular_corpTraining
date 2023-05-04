@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
           routerLink: ["/home"]},
         {
           label:'Registration',
-          routerLink: ["/registration"]
+          routerLink: ["/auth"]
         },
         {
           label: ' Users',

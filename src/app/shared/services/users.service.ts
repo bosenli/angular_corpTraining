@@ -27,7 +27,7 @@ export class UsersService {
   }
 
   deleteUser(gmin: string) {
-    return this.http.delete<any>(`${this.BaseUrl}/users/${gmin}`);
+    return this.http.delete<Users>(`${this.BaseUrl}/users/${gmin}`);
   }
 
 

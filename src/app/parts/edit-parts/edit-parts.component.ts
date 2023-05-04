@@ -10,6 +10,7 @@ import {PartsService} from '../../shared/services/parts.service';
 })
 export class EditPartsComponent implements OnInit {
   partDialogVisible: boolean= false;
+  partRow: string = '';
 
   constructor(private partsService: PartsService) { }
 
@@ -26,8 +27,18 @@ export class EditPartsComponent implements OnInit {
 //   this.editUser(data);
 // })
 
+
   private editParts(data: Parts) {
     this.partDialogVisible = true;
+    this.partRow = data.name;
     console.log('edit parts', data);
+  }
+
+  onCancel() {
+    this.partDialogVisible = false;
+  }
+
+  onSubmit(f: any) {
+
   }
 }

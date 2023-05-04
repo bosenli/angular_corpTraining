@@ -6,6 +6,7 @@ import {GmButtonModule} from '@gds/prime-ng/button';
 import {GmFormFieldModule} from '@gds/prime-ng/form-field';
 import {GmStickyTableModule} from '@gds/prime-ng/sticky-table';
 import {GmStickyTreeTableModule} from '@gds/prime-ng/sticky-tree-table';
+import {GmTabMenuModule} from '@gds/prime-ng/tab-menu';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DialogModule} from 'primeng/dialog';
@@ -31,6 +32,7 @@ import {UsersComponent} from './users.component';
     GmFormFieldModule,
     FormsModule,
     DialogModule,
+    GmTabMenuModule,
 
   ],
   providers: [MessageService]

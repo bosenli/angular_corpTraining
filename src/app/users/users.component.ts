@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {GmNavItem} from '@gds/prime-ng/api';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ObjectUtils} from 'primeng/utils';
 import {Users} from '../models/users.model';
@@ -15,6 +16,7 @@ import {ToastModule} from 'primeng/toast';
 export class UsersComponent implements OnInit {
   userTableColumns: any[] =[];
   usertable: Users[]=[];
+
 
 
   constructor(private readonly usersService: UsersService, private readonly confirmationService: ConfirmationService
@@ -73,7 +75,7 @@ export class UsersComponent implements OnInit {
     return ObjectUtils.resolveFieldData(rowData, field);
   }
 
-  onUserDelete(rowData: any) {
+  onUserDelete(rowData: Users) {
    console.log('on Delete ', rowData)
     this.confirmationService.confirm({
       message: `Are you sure you want to delete ${rowData.gmin}`,
@@ -84,11 +86,11 @@ export class UsersComponent implements OnInit {
       accept: () => {
         this.usersService.deleteUser(rowData.gmin).subscribe({
           next: (data: any)=> {
-            this.messageService.add({severity:'info', summary:'Table Deleted', detail:`You have deleted user ${rowData.gmin}`});
+            this.messageService.add({severity:'info', summary:'User Deleted', detail:`You have deleted user ${rowData.gmin}`});
             this.loadUsersTable();
           },
           error: (err) =>{
-            if(err.status === HttpStatus.ACCEPTED){
+            if(err.status === HttpStatus.SERVERERROR){
               this.messageService.add({severity:'error', summary:'Failed to delete user', detail: err.error.message});
             }
           },
@@ -98,6 +100,7 @@ export class UsersComponent implements OnInit {
   }
 
   userId: string = '';
+
 
   onEditUserRow(rowData: Users) {
     //this.myNewService.newUserEdit.next(rowData);

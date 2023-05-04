@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GmNavItem} from '@gds/prime-ng/api';
 
 @Component({
   selector: 'app-registration',
@@ -6,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  first_name: any;
+
+
+
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onCreateUser() {
 
   }
+
 }

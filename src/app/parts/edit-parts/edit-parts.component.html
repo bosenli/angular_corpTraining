@@ -1,24 +1,47 @@
-<p-dialog [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true">
-  <form>
+<p-dialog header="Edit {{partRow}}" [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true">
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div>
-      <hr class="border-1 border-gray-400">
       <div class="card">
 
         <div class="field grid">
-          <h5 class="col-12">First Name</h5>
-          <gm-form-field class="col-12" label="Select JNDI">
 
+          <label class="table-form-label">Part Name</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText/>
           </gm-form-field>
+
+          <label class="table-form-label">Description</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Type</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+          <label class="table-form-label">Email</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText/>
+          </gm-form-field>
+
+
+          <label class="table-form-label">Quantity</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputNumber/>
+          </gm-form-field>
+
 
         </div>
 
       </div>
-      <hr class="border-1 border-gray-400">
+
 
       <footer class="pt-2">
         <div class="flex justify-content-end">
-          <p-button gmSecondary class="p-1"  styleClass="p-button-danger">Cancel</p-button>
-          <p-button gmSecondary class="p-1" >Save Changes</p-button>
+          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()">Cancel</p-button>
+          <p-button type="submit" gmSecondary class="p-1" >Save Changes</p-button>
         </div>
       </footer>
     </div>

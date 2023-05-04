@@ -13,19 +13,9 @@ import {PartsService} from '../shared/services/parts.service';
   styleUrls: ['./parts.component.css']
 })
 export class PartsComponent implements OnInit {
-  // id: number;
-  // name: string;
-  // description: string;
-  // type: PartTypes;
-  // createdBy: string;
-  // createdDate: Date;
-  // updatedBy: string;
-  // updatedDate: Date;
-  // quantity: number;
-
-  private readonly BaseUrl = `${BASEURL}`;
+   private readonly BaseUrl = `${BASEURL}`;
   partsTable: Parts[]=[];
-  partsTableColumns: any
+  partsTableColumns: any;
   partColumnNames: String[]= ['Id', 'Name','Description','Type', 'Created By', 'Created Date', 'Updated By', 'Update Date'];
 
   constructor(private readonly http: HttpClient, private partsService: PartsService) {}

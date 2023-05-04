@@ -1,6 +1,7 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {GmButtonModule} from '@gds/prime-ng/button';
 import {GmFormFieldModule} from '@gds/prime-ng/form-field';
 import {GmStickyTableModule} from '@gds/prime-ng/sticky-table';
@@ -18,7 +19,8 @@ import { EditPartsComponent } from './edit-parts/edit-parts.component';
     CommonModule,
     GmButtonModule,
     GmFormFieldModule,
-    DialogModule
+    DialogModule,
+    FormsModule  //added this for form
 
   ],
   exports: [
