@@ -1,35 +1,99 @@
+<div class="card">
+  <div class="flex justify-content-between card-container">
+    <h3 class="flex align-items-center justify-content-center">Manage Part Table</h3>
+    <p-button gmPrimary class="flex align-items-center justify-content-center" type="button" (click)="addParts()" label="Add Part"></p-button>
+  </div>
+</div>
+
+
+
+
 <p-dialog header="Edit {{partRow}}" [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true">
+<!--  id: number;-->
+<!--  name: string;-->
+<!--  description: string;-->
+<!--  quantity: number;-->
+<!--  type: PartTypes;   //option to choose-->
+<!--  createdBy: Users;  //not editable/updatable, and it was set by a user in the user list-->
+<!--  createdDate: Date;     //not editable-->
+<!--  updatedBy: Users;      //not editable-->
+<!--  updatedDate: Date;     //not editable-->
 
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div>
       <div class="card">
 
         <div class="field grid">
+          <label class="table-form-label">Part id</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText
+                   ngModel id="partId" name="id"
+                   [(ngModel)]="partSelectionOnFormUI.id"
+                   [disabled]="true"
+            />
+          </gm-form-field>
+
 
           <label class="table-form-label">Part Name</label>
           <gm-form-field class="col-12">
-            <input gmInput pInputText/>
+            <input gmInput pInputText
+                   ngModel id="partName" name="name"
+                   [(ngModel)]="partSelectionOnFormUI.name"
+            />
           </gm-form-field>
 
           <label class="table-form-label">Description</label>
           <gm-form-field class="col-12">
-            <input gmInput pInputText/>
+            <input gmInput pInputText
+                   ngModel id="partDesc" name="description"
+                   [(ngModel)]="partSelectionOnFormUI.description"
+            />
           </gm-form-field>
+
 
           <label class="table-form-label">Type</label>
           <gm-form-field class="col-12">
-            <input gmInput pInputText/>
+          <p-dropdown gmInput appendTo="body"  [showClear]="true"
+                      ngModel id="type" name="type"
+                      [(ngModel)]="partSelectionOnFormUI.type"
+                      [autoDisplayFirst]="false"
+                      [options]="partTypesList"
+                      optionLabel="name"
+                      optionValue="value"
+
+          ></p-dropdown>
           </gm-form-field>
 
           <label class="table-form-label">Email</label>
           <gm-form-field class="col-12">
-            <input gmInput pInputText/>
+            <input gmInput pInputText
+                   ngModel id="email" name="email"
+                   [(ngModel)]="partSelectionOnFormUI.updatedBy.email"
+            />
           </gm-form-field>
 
+          <label class="table-form-label">Created Date</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText [disabled] ="true"
+                   ngModel id="createdDate" name="createdDate"
+                   [(ngModel)]="partSelectionOnFormUI.createdDate"
+            />
+          </gm-form-field>
+
+          <label class="table-form-label">Updated Date</label>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText [disabled] = "true"
+                   ngModel id="updatedDate" name="updatedDate"
+                   [(ngModel)]="partSelectionOnFormUI.updatedDate"
+            />
+          </gm-form-field>
 
           <label class="table-form-label">Quantity</label>
           <gm-form-field class="col-12">
-            <input gmInput pInputNumber/>
+            <input gmInput pInputNumber
+                   ngModel id="quantity" name="quantity"
+                   [(ngModel)]="partSelectionOnFormUI.quantity"
+            />
           </gm-form-field>
 
 
@@ -37,11 +101,10 @@
 
       </div>
 
-
       <footer class="pt-2">
         <div class="flex justify-content-end">
-          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()">Cancel</p-button>
-          <p-button type="submit" gmSecondary class="p-1" >Save Changes</p-button>
+          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()" type="button">Cancel</p-button>
+          <p-button  gmSecondary class="p-1" type="submit" >Save Changes</p-button>
         </div>
       </footer>
     </div>

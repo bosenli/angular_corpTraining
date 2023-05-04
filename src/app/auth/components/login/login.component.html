@@ -1,1 +1,29 @@
-<p>login works!</p>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div>
+    <div class="card">
+
+      <div>
+        <h5>Email</h5>
+          <input gmInput pInputText
+                 ngModel id="email" name="email"
+                 [required]="true"/>
+        </div>
+
+      <div>
+      <h5>Password</h5>
+       <input gmInput pInputText
+              ngModel id="password" name="password"
+              [required]="true">
+      </div>
+
+    </div>
+
+
+    <footer class="pt-2">
+      <div class="flex justify-content-center">
+        <p-button gmSecondary class="p-1"
+                  type="submit">Log In</p-button>
+      </div>
+    </footer>
+  </div>
+</form>

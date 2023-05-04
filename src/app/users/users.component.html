@@ -21,6 +21,7 @@
                       recordStatus="Total Records {totalRecords}"
                  columnResizeMode="expand">
 
+
   <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body">
     <tr>
       <td *ngFor="let column of columns" [ngStyle]="{flex: column.flexWidth}" gmColumnFrozen [id]="column.id"

@@ -69,6 +69,10 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.initColumns();
     this.loadUsersTable();
+
+    this.usersService.userUpdated.subscribe(()=>{
+      this.loadUsersTable();
+    })
   }
 
   getField(rowData: Users, field: any) {
@@ -91,7 +95,7 @@ export class UsersComponent implements OnInit {
           },
           error: (err) =>{
             if(err.status === HttpStatus.SERVERERROR){
-              this.messageService.add({severity:'error', summary:'Failed to delete user', detail: err.error.message});
+              this.messageService.add({severity:'error', summary:'Failed to delete user, the GMIN is an foreign key of another table', detail: err.error.message});
             }
           },
         });

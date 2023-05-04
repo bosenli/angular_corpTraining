@@ -1,6 +1,12 @@
-<h5>Parts Table</h5>
-
 <app-edit-parts></app-edit-parts>
+
+<p-confirmDialog
+  [style]="{width: '50vw'}"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-outlined"
+  acceptIcon=""
+  rejectIcon=""></p-confirmDialog>
+
 <gm-sticky-table #simpleTable [columns]="partsTableColumns"
                  [reorderableColumns]="true"
                  [rowsPerPageOptions]="[10 ,25, 50, 100, {showAll: 'All'}]"
@@ -13,6 +19,20 @@
                  emptyMessage="No records found..."
                  recordStatus="Total Records {totalRecords}"
                  columnResizeMode="expand">
+
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex flex">
+
+      <p-button gmAction icon="pi pi-plus" title="Add">
+      </p-button>
+
+      <span class="p-input-icon-left p-ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text"  placeholder="Global Search" />
+    </span>
+    </div>
+  </ng-template>
+
 
   <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body">
     <tr>
@@ -35,3 +55,5 @@
   </ng-template>
 
 </gm-sticky-table>
+
+<p-toast></p-toast>

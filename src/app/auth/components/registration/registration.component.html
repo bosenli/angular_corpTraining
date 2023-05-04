@@ -1,1 +1,76 @@
-<p>registration works</p>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div>
+    <div class="card">
+<!--      gmin: string;-->
+<!--      firstName: string;-->
+<!--      lastName: string;-->
+<!--      email: string;-->
+<!--      password: string;-->
+<!--      companyName: string;-->
+      <div class="field grid">
+
+        <label class="table-form-label">GMIN</label>
+        <gm-form-field class="col-12" >
+          <input [required]="true" type="text" id="gmin"
+                 gmInput typegmInput pInputText
+          ngModel
+          name="gmin"
+          />
+        </gm-form-field>
+
+        <label class="table-form-label">First Name</label>
+        <gm-form-field class="col-12" >
+          <input type="text" id="firstName" name="firstName" ngModel gmInput pInputText/>
+        </gm-form-field>
+
+        <label class="table-form-label">Last Name</label>
+        <gm-form-field class="col-12" >
+          <input type="text" id="lastName" name="lastName" ngModel gmInput pInputText/>
+        </gm-form-field>
+
+        <label class="table-form-label">Email</label>
+        <gm-form-field class="col-12" >
+          <input [required]="true" type="text" id="email" name="email" ngModel gmInput pInputText/>
+        </gm-form-field>
+
+        <label class="table-form-label">Company</label>
+        <gm-form-field class="col-12" >
+          <input type="text" id="company" name="companyName" ngModel gmInput pInputText/>
+        </gm-form-field>
+
+
+        <h5>Password</h5>
+        <p-password  [required]="true"
+          ngModel name='password' [toggleMask]="true">
+          <ng-template pTemplate="header">
+            <h6>Pick a password</h6>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2">Suggestions</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+            </ul>
+          </ng-template>
+        </p-password>
+
+
+
+      </div>
+
+    </div>
+
+
+    <footer class="pt-2">
+      <div class="flex justify-content-center">
+        <p-button gmSecondary class="p-1" type="submit">Sign Up</p-button>
+      </div>
+      <div>
+        {{signUpMessage}}
+      </div>
+    </footer>
+  </div>
+</form>

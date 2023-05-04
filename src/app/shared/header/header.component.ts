@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {GmNavItem} from '@gds/prime-ng/api';
+import {UsersService} from '../services/users.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   items: MenuItem[]=[];
   userName: string = '';
 
-  constructor() { }
+  constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
 
@@ -42,8 +43,8 @@ export class HeaderComponent implements OnInit {
           styleClass: 'p-menuitem-link-active',
           routerLink: ["/home"]},
         {
-          label:'Registration',
-          routerLink: ["/auth"]
+          label:'Authentication',
+          routerLink: ["/login"]
         },
         {
           label: ' Users',
@@ -65,6 +66,13 @@ export class HeaderComponent implements OnInit {
         },
 
       ];
+
+    // this.fetchUserName();
+
   }
 
+  //
+  // private fetchUserName() {
+  //   this.userService.getUserByGmin()
+  // }
 }

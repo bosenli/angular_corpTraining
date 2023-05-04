@@ -12,10 +12,19 @@ export class PartsService {
   private readonly BaseUrl = `${BASEURL}`;
 
   newPartEdit = new Subject<Parts>();
+  partUpdatedListener = new Subject<Boolean>();
+
 
   constructor(private readonly http: HttpClient) {}
   getAllParts(): Observable<Parts[]> {
     return this.http.get<Parts[]>(`${this.BaseUrl}/parts`);
   }
 
+  updateParts(content: Parts): Observable<Parts> {
+    return this.http.put<Parts>(`${this.BaseUrl}/parts/${content.id}`, content)
+  }
+
+  deletePart(id: number) {
+    return this.http.delete<Parts>(`${this.BaseUrl}/users/${id}`);
+  }
 }

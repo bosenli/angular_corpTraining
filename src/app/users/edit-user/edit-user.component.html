@@ -1,34 +1,51 @@
 
+
 <p-dialog header="Edit User {{userId}}" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
-  <form>
+  <form  (ngSubmit)="onUserFormSubmit(f)" #f="ngForm">
     <div>
       <div class="card">
 
         <div class="field grid">
+          <label class="table-form-label">GMIN</label>
+          <gm-form-field class="col-12" >
+            <input gmInput pInputText
+                   ngModel
+                   [(ngModel)]="userId"
+                   [disabled]="true"
+                   name="gmin"/>
+          </gm-form-field>
+
 
           <label class="table-form-label">First Name</label>
-          <gm-form-field class="col-12" label="First Name">
-            <input gmInput pInputText/>
+          <gm-form-field class="col-12" >
+            <input gmInput pInputText
+              ngModel
+                   [(ngModel)]="firstName"
+                   name="firstName"/>
           </gm-form-field>
 
           <label class="table-form-label">Last Name</label>
-          <gm-form-field class="col-12" label="Last Name">
-            <input gmInput pInputText/>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText ngModel name="lastName" [(ngModel)]="lastName"/>
           </gm-form-field>
 
           <label class="table-form-label">Email</label>
-          <gm-form-field class="col-12" label="Email">
-            <input gmInput pInputText/>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText ngModel id="email" name="email"
+                   [(ngModel)]="email"/>
           </gm-form-field>
 
           <label class="table-form-label">Password</label>
-          <gm-form-field class="col-12" label="Password">
-            <input gmInput pInputText/>
+          <gm-form-field class="col-12" >
+            <input gmInput pInputText ngModel name="password"
+                   [(ngModel)]="password"/>
           </gm-form-field>
 
           <label class="table-form-label">Company</label>
-          <gm-form-field class="col-12" label="Company">
-            <input gmInput pInputText/>
+          <gm-form-field class="col-12">
+            <input gmInput pInputText id="company" ngModel
+                   [(ngModel)]="companyName"
+                   name="companyName"/>
           </gm-form-field>
 
 
@@ -39,11 +56,13 @@
 
       <footer class="pt-2">
         <div class="flex justify-content-end">
-          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()">Cancel</p-button>
-          <p-button gmSecondary class="p-1" >Save Changes</p-button>
+          <p-button gmSecondary class="p-1"  styleClass="p-button-danger" (click)="onCancel()" type="button">Cancel</p-button>
+          <p-button gmSecondary class="p-1" type="submit" >Save Changes</p-button>
         </div>
       </footer>
     </div>
   </form>
 
 </p-dialog>
+
+<p-toast></p-toast>

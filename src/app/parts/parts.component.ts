@@ -1,10 +1,13 @@
 import {HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {FilterTemplate} from '@gds/prime-ng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {ObjectUtils} from 'primeng/utils';
 import {Parts} from '../models/parts.model';
 import {PartTypes} from '../models/partTypes.model';
 import {Users} from '../models/users.model';
 import {BASEURL} from '../shared/constants';
+import {HttpStatus} from '../shared/enum';
 import {PartsService} from '../shared/services/parts.service';
 
 @Component({
@@ -18,10 +21,10 @@ export class PartsComponent implements OnInit {
   partsTableColumns: any;
   partColumnNames: String[]= ['Id', 'Name','Description','Type', 'Created By', 'Created Date', 'Updated By', 'Update Date'];
 
-  constructor(private readonly http: HttpClient, private partsService: PartsService) {}
+  constructor(private readonly http: HttpClient, private partsService: PartsService, private readonly confirmationService: ConfirmationService, private readonly messageService: MessageService) {}
 
   private loadPartsTable(){
-    //Users[] from service return type
+    //parts[] from service return type
     this.partsService.getAllParts().subscribe((data: Parts[]) => {
       // do something with the data
       console.log(data)
@@ -61,6 +64,9 @@ export class PartsComponent implements OnInit {
         id: 'Created Date',
         header: 'Created Date',
         fields: ['createdDate'],
+        filter: {
+          template: FilterTemplate.CALENDAR,
+          placeholder: 'Date' }
       },
       {
         id: 'updatedBy',
@@ -71,6 +77,9 @@ export class PartsComponent implements OnInit {
         id: 'Update Date',
         header: 'Update Date',
         fields: ['updatedDate'],
+        filter: {
+          template: FilterTemplate.CALENDAR,
+          placeholder: 'Date' }
       },
       {
         id: 'quantity',
@@ -84,6 +93,10 @@ export class PartsComponent implements OnInit {
 
     this.initPartsColumns();
     this.loadPartsTable();
+
+    this.partsService.partUpdatedListener.subscribe(()=>{
+      this.loadPartsTable();
+    })
   }
 
   getField(rowData: any, field: any) {
@@ -95,6 +108,30 @@ export class PartsComponent implements OnInit {
   }
 
   onPartsDelete(rowData: any) {
+    console.log('on Delete ', rowData)
+    this.confirmationService.confirm({
+      message: `Are you sure you want to delete ${rowData.gmin}`,
+      header: `Confirm Delete user ${rowData.gmin}`,
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel:'Delete',
+      rejectLabel:'Cancel',
+      accept: () => {
+        this.partsService.deletePart(rowData.id).subscribe({
+          next: (data: any)=> {
+            this.messageService.add({severity:'info', summary:'Part Deleted', detail:`You have deleted part ${rowData.id}`});
+            this.loadPartsTable();
+          },
+          error: (err) =>{
+            if(err.status === HttpStatus.SERVERERROR){
+              this.messageService.add({severity:'error', summary:`Failed to delete part ${rowData.id}`, detail: err.error.message});
+            }
+          },
+        });
+      }
+    });
+  }
+
+  showDialog() {
 
   }
 }
