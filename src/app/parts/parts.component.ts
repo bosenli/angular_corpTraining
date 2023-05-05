@@ -20,6 +20,7 @@ export class PartsComponent implements OnInit {
   partsTable: Parts[]=[];
   partsTableColumns: any;
   partColumnNames: String[]= ['Id', 'Name','Description','Type', 'Created By', 'Created Date', 'Updated By', 'Update Date'];
+  retrievedDataLength: number = 0;
 
   constructor(private readonly http: HttpClient, private partsService: PartsService, private readonly confirmationService: ConfirmationService, private readonly messageService: MessageService) {}
 
@@ -29,6 +30,7 @@ export class PartsComponent implements OnInit {
       // do something with the data
       console.log(data)
       this.partsTable = data;
+      this.retrievedDataLength = this.partsTable.length;
     });
   }
 
@@ -57,8 +59,8 @@ export class PartsComponent implements OnInit {
       },
       {
         id: 'Created By',
-        header: 'Email',
-        fields: ['createdBy.email'],
+        header: 'Created By',
+        fields: ['createdBy.gmin'],
       },
       {
         id: 'Created Date',
@@ -97,6 +99,11 @@ export class PartsComponent implements OnInit {
     this.partsService.partUpdatedListener.subscribe(()=>{
       this.loadPartsTable();
     })
+
+    this.partsService.newPartAdded.subscribe(()=> {
+      this.loadPartsTable();
+      }
+    )
   }
 
   getField(rowData: any, field: any) {
@@ -110,8 +117,8 @@ export class PartsComponent implements OnInit {
   onPartsDelete(rowData: any) {
     console.log('on Delete ', rowData)
     this.confirmationService.confirm({
-      message: `Are you sure you want to delete ${rowData.gmin}`,
-      header: `Confirm Delete user ${rowData.gmin}`,
+      message: `Are you sure you want to delete part row # ${rowData.id}`,
+      header: `Confirm Delete user ${rowData.id}`,
       icon: 'pi pi-exclamation-triangle',
       acceptLabel:'Delete',
       rejectLabel:'Cancel',
@@ -123,7 +130,7 @@ export class PartsComponent implements OnInit {
           },
           error: (err) =>{
             if(err.status === HttpStatus.SERVERERROR){
-              this.messageService.add({severity:'error', summary:`Failed to delete part ${rowData.id}`, detail: err.error.message});
+              this.messageService.add({severity:'error', summary:`Failed to delete part # ${rowData.id} sucessfully`, detail: err.error.message});
             }
           },
         });

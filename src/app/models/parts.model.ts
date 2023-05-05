@@ -11,5 +11,4 @@ export interface Parts {
   createdDate: Date;     //not editable
   updatedBy: Users;      //not editable
   updatedDate: Date;     //not editable
-
 }

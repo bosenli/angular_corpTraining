@@ -21,16 +21,21 @@
                  columnResizeMode="expand">
 
   <ng-template pTemplate="caption">
-    <div class="p-d-flex flex">
 
-      <p-button gmAction icon="pi pi-plus" title="Add">
-      </p-button>
-
+    <div>
       <span class="p-input-icon-left p-ml-auto">
         <i class="pi pi-search"></i>
-        <input pInputText type="text"  placeholder="Global Search" />
-    </span>
+      <input pInputText type="text"  /> </span>
     </div>
+    <div class="p-d-flex flex">
+
+<!--      <p-button gmAction icon="pi pi-plus" title="Add">-->
+<!--      </p-button>-->
+
+      <div><p> Retrieved {{retrievedDataLength}} results from server.</p></div>
+
+
+        </div>
   </ng-template>
 
 

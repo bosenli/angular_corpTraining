@@ -1,31 +1,20 @@
 <div class="card">
   <div class="flex justify-content-between card-container">
     <h3 class="flex align-items-center justify-content-center">Manage Part Table</h3>
-    <p-button gmPrimary class="flex align-items-center justify-content-center" type="button" (click)="addParts()" label="Add Part"></p-button>
+    <p-button gmPrimary class="flex align-items-center justify-content-center" type="button" (click)="addPart()" label="Add Part"></p-button>
   </div>
 </div>
 
-
-
-
-<p-dialog header="Edit {{partRow}}" [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true">
-<!--  id: number;-->
-<!--  name: string;-->
-<!--  description: string;-->
-<!--  quantity: number;-->
-<!--  type: PartTypes;   //option to choose-->
-<!--  createdBy: Users;  //not editable/updatable, and it was set by a user in the user list-->
-<!--  createdDate: Date;     //not editable-->
-<!--  updatedBy: Users;      //not editable-->
-<!--  updatedDate: Date;     //not editable-->
+<p-dialog header= "{{editPartMode ? 'Edit Row ' + partRow : 'Add A New Part' }}" [(visible)]="partDialogVisible" [style]="{width: '50vw'}" [maximizable]="true" [modal]="true">
 
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div>
       <div class="card">
 
         <div class="field grid">
-          <label class="table-form-label">Part id</label>
-          <gm-form-field class="col-12">
+
+          <label class="table-form-label" *ngIf="editPartMode">Part id</label>
+          <gm-form-field class="col-12" *ngIf="editPartMode">
             <input gmInput pInputText
                    ngModel id="partId" name="id"
                    [(ngModel)]="partSelectionOnFormUI.id"
@@ -60,7 +49,6 @@
                       [options]="partTypesList"
                       optionLabel="name"
                       optionValue="value"
-
           ></p-dropdown>
           </gm-form-field>
 
@@ -72,7 +60,19 @@
             />
           </gm-form-field>
 
-          <label class="table-form-label">Created Date</label>
+          <label class="table-form-label" >Created By</label>
+          <gm-form-field class="col-12">
+            <p-dropdown gmInput pInputText [disabled] = "editPartMode ? true: false" [autoDisplayFirst]="false"
+                   ngModel id="createdBy" name="createdBy"
+                   [(ngModel)]="partSelectionOnFormUI.createdBy"
+                        [options]="UsersList"
+                        optionLabel="name"
+                        optionValue="value"
+            ></p-dropdown>
+          </gm-form-field>
+
+
+          <label class="table-form-label" class="col-12" >Created Date</label>
           <gm-form-field class="col-12">
             <input gmInput pInputText [disabled] ="true"
                    ngModel id="createdDate" name="createdDate"
@@ -80,13 +80,27 @@
             />
           </gm-form-field>
 
-          <label class="table-form-label">Updated Date</label>
+
+          <label class="table-form-label" >Updated By</label>
+          <gm-form-field class="col-12" >
+            <p-dropdown gmInput pInputText [disabled] = "editPartMode ? true: false" [autoDisplayFirst]="false"
+                   ngModel id="updatedBy" name="updatedBy"
+                   [(ngModel)]="partSelectionOnFormUI.updatedBy"
+                        [options]="UsersList"
+                        optionLabel="name"
+                        optionValue="value"
+            ></p-dropdown>
+          </gm-form-field>
+
+
+          <label class="table-form-label" class="col-12">Updated Date</label>
           <gm-form-field class="col-12">
             <input gmInput pInputText [disabled] = "true"
                    ngModel id="updatedDate" name="updatedDate"
                    [(ngModel)]="partSelectionOnFormUI.updatedDate"
             />
           </gm-form-field>
+
 
           <label class="table-form-label">Quantity</label>
           <gm-form-field class="col-12">

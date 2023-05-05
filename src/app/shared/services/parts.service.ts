@@ -13,6 +13,7 @@ export class PartsService {
 
   newPartEdit = new Subject<Parts>();
   partUpdatedListener = new Subject<Boolean>();
+  newPartAdded = new Subject<Boolean>();
 
 
   constructor(private readonly http: HttpClient) {}
@@ -24,7 +25,11 @@ export class PartsService {
     return this.http.put<Parts>(`${this.BaseUrl}/parts/${content.id}`, content)
   }
 
+  addNewPart(content: Parts): Observable<Parts> {
+    return this.http.post<Parts>(`${this.BaseUrl}/parts`, content)
+  }
+
   deletePart(id: number) {
-    return this.http.delete<Parts>(`${this.BaseUrl}/users/${id}`);
+    return this.http.delete<Parts>(`${this.BaseUrl}/parts/${id}`);
   }
 }
