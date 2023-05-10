@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'partStoreAngularProject';
+  constructor(private router: Router) {}
+  title = 'GM Part Store Project';
+
+  onLogout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/auth']);
+  }
 }

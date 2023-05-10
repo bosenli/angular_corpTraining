@@ -16,6 +16,8 @@ import {ToastModule} from 'primeng/toast';
 export class UsersComponent implements OnInit {
   userTableColumns: any[] =[];
   usertable: Users[]=[];
+  private clonedUsers: { [i: string]: Users; }={};
+  simpleColumn: string[]=[];
 
 
 
@@ -55,6 +57,8 @@ export class UsersComponent implements OnInit {
         fields: ['companyName'],
       },
     ];
+
+    this.simpleColumn = ['gmin','firstName','lastName','email','password','companyName']
   }
 
   private loadUsersTable(){
@@ -63,6 +67,7 @@ export class UsersComponent implements OnInit {
       // do something with the data
       console.log(data)
       this.usertable= data;
+      console.log('this.usertable', this.usertable);
     });
   }
 
@@ -76,6 +81,7 @@ export class UsersComponent implements OnInit {
   }
 
   getField(rowData: Users, field: any) {
+    console.log('getField rowData', rowData, 'getfiled filed', field);
     return ObjectUtils.resolveFieldData(rowData, field);
   }
 
@@ -113,4 +119,22 @@ export class UsersComponent implements OnInit {
     //call modal for edit , emit a new User row
     this.usersService.newUserEdit.next(rowData);
     }
+   currentRow:any;
+  selectedProduct: any;
+  onRowEditInit(rowData: Users) {
+    console.log('on row eidt init row data: ', rowData)
+    console.log('rowData.id:', rowData.gmin)
+    this.clonedUsers[rowData.gmin] = {...rowData};
+    console.log('this.cloneUsers:', this.clonedUsers)
+
+  }
+
+  onRowEditSave(rowData: any) {
+
+  }
+
+  onRowEditCancel(rowData: any, rowIndex: any) {
+    this.usertable[rowIndex] = this.clonedUsers[rowData.gmin];
+    delete this.usertable[rowData.gmin];
+  }
 }

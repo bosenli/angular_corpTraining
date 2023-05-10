@@ -7,14 +7,18 @@
           <input gmInput pInputText
                  ngModel id="email" name="email"
                  [required]="true"/>
-        </div>
-
-      <div>
-      <h5>Password</h5>
-       <input gmInput pInputText
-              ngModel id="password" name="password"
-              [required]="true">
       </div>
+
+      <h5>Password</h5>
+      <div class="password-input">
+        <input type="password" gmInput pInputText [(ngModel)]="password" id="password" name="password" [required]="true" #passwordInput />
+        <button type="button" class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+          <i class="fas" [ngClass]="{'pi pi-eye': !passwordVisible, 'pi pi-eye-slash': passwordVisible}"></i>
+        </button>
+      </div>
+
+
+
 
     </div>
 

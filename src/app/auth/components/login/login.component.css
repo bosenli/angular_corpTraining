@@ -1,0 +1,24 @@
+
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.show-password {
+  color: #333;
+}

@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {GmFormFieldModule} from '@gds/prime-ng/form-field';
@@ -29,6 +30,7 @@ import {RegistrationComponent} from './components/registration/registration.comp
     PasswordModule,
     DividerModule,
     MessagesModule,
+    CommonModule,
     //inside the auth module , not the app module to make it work
   ],
   providers:[]

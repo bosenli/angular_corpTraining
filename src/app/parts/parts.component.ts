@@ -4,8 +4,8 @@ import {FilterTemplate} from '@gds/prime-ng/api';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ObjectUtils} from 'primeng/utils';
 import {Parts} from '../models/parts.model';
-import {PartTypes} from '../models/partTypes.model';
-import {Users} from '../models/users.model';
+
+
 import {BASEURL} from '../shared/constants';
 import {HttpStatus} from '../shared/enum';
 import {PartsService} from '../shared/services/parts.service';
@@ -15,6 +15,9 @@ import {PartsService} from '../shared/services/parts.service';
   templateUrl: './parts.component.html',
   styleUrls: ['./parts.component.css']
 })
+
+
+
 export class PartsComponent implements OnInit {
    private readonly BaseUrl = `${BASEURL}`;
   partsTable: Parts[]=[];
@@ -137,8 +140,18 @@ export class PartsComponent implements OnInit {
       }
     });
   }
-
-  showDialog() {
-
+  filterPartsTable(searchText: string) {
+    if (searchText) {
+      this.partsTable = this.partsTable.filter(part =>
+        Object.values(part).some(value =>
+          value.toString().toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    } else {
+      this.loadPartsTable();
+    }
   }
+
+
+
 }

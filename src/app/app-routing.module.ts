@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthComponent} from './auth/auth.component';
 import {AuthModule} from './auth/auth.module';
+
 import {LoginComponent} from './auth/components/login/login.component';
 import {HomeComponent} from './home/home.component';
 import {PartTypeComponent} from './part-type/part-type.component';
@@ -13,19 +14,26 @@ import {UsersComponent} from './users/users.component';
 const routes: Routes = [
   { path:'', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  //loadChildren is lazy load method return promise to improve performance
+  // loadChildren is lazy load method return promise to improve performance
   // {path:'auth',  loadChildren: () => import('./auth/auth.module').then(m=>m.AuthModule)
   // },
   {path: 'auth', component: AuthComponent},
   {path: 'users', component: UsersComponent},
   {path: 'part-type', component: PartTypeComponent},
   {path:'parts',component: PartsComponent},
+    ]
+// const routes: Routes = [
+//   { path: '', component: HomeComponent },
+//   { path: 'home', component: HomeComponent },
+//   { path: 'auth', component: AuthComponent },
+//   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+//   { path: 'part-type', component: PartTypeComponent, canActivate: [AuthGuard] },
+//   { path: 'parts', component: PartsComponent, canActivate: [AuthGuard] },
+// ];
 
 
 
 
-
-];
 @NgModule({
   declarations: [],
   imports: [
