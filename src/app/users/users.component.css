@@ -1,0 +1,30 @@
+.header-style {
+  width: 20%;
+  background-color: #f2f2f2; /* Light grey background */
+  color: #333; /* Dark text color */
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ddd; /* Border around each header cell */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Slight shadow for a 3D effect */
+}
+
+:host ::ng-deep p-table .p-datatable-tbody > tr > td {
+  border: 1px solid #ddd !important;
+  padding: 8px;
+  text-align: center;
+}
+
+:host ::ng-deep p-table .p-datatable-thead > tr > th {
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+:host ::ng-deep p-table .p-datatable-tbody > tr:nth-child(2n) {
+  background-color: #f2f2f2;
+}

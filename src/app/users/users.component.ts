@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {GmNavItem} from '@gds/prime-ng/api';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {Table} from 'primeng/table';
 import {ObjectUtils} from 'primeng/utils';
 import {Users} from '../models/users.model';
 import {HttpStatus} from '../shared/enum';
@@ -21,6 +22,7 @@ export class UsersComponent implements OnInit {
 
 
 
+
   constructor(private readonly usersService: UsersService, private readonly confirmationService: ConfirmationService
   , private readonly messageService: MessageService) { }
 
@@ -35,6 +37,7 @@ export class UsersComponent implements OnInit {
         id: 'firstName',
         header: 'First Name',
         fields: ['firstName'],
+        editable: true
       },
       {
         id: 'lastName',
@@ -55,6 +58,7 @@ export class UsersComponent implements OnInit {
         id: 'companyName',
         header: 'Company Name',
         fields: ['companyName'],
+        editable:true
       },
     ];
 
@@ -66,7 +70,10 @@ export class UsersComponent implements OnInit {
     this.usersService.getAllUsers().subscribe((data: Users[]) => {
       // do something with the data
       console.log(data)
-      this.usertable= data;
+      this.usertable= data.map((user, index)=>({
+        ...user,
+        idx: index
+      }));
       console.log('this.usertable', this.usertable);
     });
   }
@@ -81,7 +88,7 @@ export class UsersComponent implements OnInit {
   }
 
   getField(rowData: Users, field: any) {
-    console.log('getField rowData', rowData, 'getfiled filed', field);
+    //console.log('getField rowData', rowData, 'getfiled filed', field);
     return ObjectUtils.resolveFieldData(rowData, field);
   }
 
@@ -122,7 +129,7 @@ export class UsersComponent implements OnInit {
    currentRow:any;
   selectedProduct: any;
   onRowEditInit(rowData: Users) {
-    console.log('on row eidt init row data: ', rowData)
+    console.log('edit init row data: ', rowData)
     console.log('rowData.id:', rowData.gmin)
     this.clonedUsers[rowData.gmin] = {...rowData};
     console.log('this.cloneUsers:', this.clonedUsers)
@@ -130,11 +137,19 @@ export class UsersComponent implements OnInit {
   }
 
   onRowEditSave(rowData: any) {
-
+       console.log('save',rowData)
   }
 
   onRowEditCancel(rowData: any, rowIndex: any) {
     this.usertable[rowIndex] = this.clonedUsers[rowData.gmin];
     delete this.usertable[rowData.gmin];
+  }
+
+  clear(table: Table) {
+    table.clear();
+    //table.reset();
+    table.sortField='';
+    table.sortOrder=1;
+
   }
 }

@@ -1,160 +1,39 @@
-
-<!--<p-confirmDialog-->
-<!--  [style]="{width: '50vw'}"-->
-<!--  acceptButtonStyleClass="p-button-danger"-->
-<!--  rejectButtonStyleClass="p-button-outlined"-->
-<!--  acceptIcon=""-->
-<!--  rejectIcon=""></p-confirmDialog>-->
-
-<!--<h5>User Table</h5>-->
-<!--<app-edit-user></app-edit-user>-->
-<!--<gm-sticky-table #simpleTable [columns]="userTableColumns"-->
-<!--                      [reorderableColumns]="true"-->
-<!--                      [rowsPerPageOptions]="[10 ,25, 50, 100, {showAll: 'All'}]"-->
-<!--                      [rows]="10"-->
-<!--                      [value]="usertable"-->
-<!--                      [checkBoxColumn]=false-->
-<!--                      [actionColumn]=true-->
-<!--                      actionColumnWidth="12.75rem"-->
-<!--                      actionColumnHeader="Actions"-->
-<!--                      emptyMessage="No records found..."-->
-<!--                      recordStatus="Total Records {totalRecords}"-->
-<!--                 columnResizeMode="expand">-->
-
-
-<!--  <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body">-->
-<!--    <tr>-->
-<!--      <td *ngFor="let column of columns" [ngStyle]="{flex: column.flexWidth}" gmColumnFrozen [id]="column.id"-->
-<!--          [alignFrozen]="column.alignFrozen" [frozen]="column.frozen">-->
-
-<!--        <span class="p-column-title">{{column.mobileHeader}}</span>-->
-
-<!--&lt;!&ndash;        <span [id]="'table-cell-' + column.id + '-' + rowIndex">&ndash;&gt;-->
-<!--&lt;!&ndash;          {{column.isValid ? (rowData.valid ? 'Valid': 'Invalid') : getField(rowData,column.fields[0])}}</span>&ndash;&gt;-->
-
-<!--        <span> {{ getField(rowData,column.fields[0])}}</span>-->
-<!--        -->
-<!--      </td>-->
-
-<!--      <td gmColumnFrozen alignFrozen="right" [ngStyle]="{flex: actionWidth}">-->
-
-<!--        <p-button gmAction [id]="'table-edit-button-' + rowIndex" icon="pi pi-pencil" title="Edit" (click)="onEditUserRow(rowData)"></p-button>-->
-
-<!--        <p-button gmAction [id]="'table-delete-button-' + rowIndex" icon="pi pi-trash" title="Delete" styleClass="p-button-danger"  (onClick)="onUserDelete(rowData)"></p-button>-->
-
-<!--        <p-button gmAction ></p-button>-->
-<!--      </td>-->
-
-<!--    </tr>-->
-<!--  </ng-template>-->
-<!--</gm-sticky-table>-->
-
-<!--<p-toast></p-toast>-->
-
-
-
-<!--<p-confirmDialog-->
-<!--  [style]="{width: '50vw'}"-->
-<!--  acceptButtonStyleClass="p-button-danger"-->
-<!--  rejectButtonStyleClass="p-button-outlined"-->
-<!--  acceptIcon=""-->
-<!--  rejectIcon=""></p-confirmDialog>-->
-
-<!--<h5>User Table</h5>-->
-<!--<app-edit-user></app-edit-user>-->
-
-<!--<gm-sticky-table #simpleTable [columns]="userTableColumns"-->
-<!--                 [reorderableColumns]="true"-->
-<!--                 [rowsPerPageOptions]="[10 ,25, 50, 100, {showAll: 'All'}]"-->
-<!--                 [rows]="10"-->
-<!--                 [value]="usertable"-->
-<!--                 [checkBoxColumn]=false-->
-<!--                 [actionColumn]=true-->
-<!--                 actionColumnWidth="12.75rem"-->
-<!--                 actionColumnHeader="Actions"-->
-<!--                 emptyMessage="No records found..."-->
-<!--                 recordStatus="Total Records {totalRecords}"-->
-<!--                 columnResizeMode="expand">-->
-
-<!--  <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body"-->
-<!--   let-editing="editing"-->
-<!--  >-->
-
-<!--    <tr [pEditableRow]="rowData">-->
-<!--      <td *ngFor="let column of columns" [ngStyle]="{flex: column.flexWidth}" gmColumnFrozen [id]="column.id"-->
-<!--          [alignFrozen]="column.alignFrozen" [frozen]="column.frozen">-->
-
-<!--        <p-cellEditor>-->
-<!--          <ng-template pTemplate="input">-->
-<!--            <input pInputText type="text" [(ngModel)]="column.fields[0]">-->
-<!--          </ng-template>-->
-<!--          <ng-template pTemplate="output">-->
-<!--            {{getField(rowData,column.fields[0])}}-->
-<!--          </ng-template>-->
-<!--        </p-cellEditor>-->
-
-<!--&lt;!&ndash;        <span class="p-column-title">{{column.mobileHeader}}</span>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <span> {{ getField(rowData,column.fields[0])}}</span>&ndash;&gt;-->
-
-<!--      </td>-->
-
-<!--      <td gmColumnFrozen alignFrozen="right" [ngStyle]="{flex: actionWidth}">-->
-
-<!--        <div class="flex align-items-center justify-content-center gap-2">-->
-<!--          <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(rowData)" class="p-button-rounded p-button-text"></button>-->
-<!--          <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(rowData)" class="p-button-rounded p-button-text p-button-success mr-2"></button>-->
-<!--          <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(rowData, rowIndex)" class="p-button-rounded p-button-text p-button-danger"></button>-->
-<!--        </div>-->
-
-<!--        <p-button gmAction [id]="'table-edit-button-' + rowIndex" icon="pi pi-pencil" title="Edit" (click)="onEditUserRow(rowData)"></p-button>-->
-
-<!--        <p-button gmAction [id]="'table-delete-button-' + rowIndex" icon="pi pi-trash" title="Delete" styleClass="p-button-danger"  (onClick)="onUserDelete(rowData)"></p-button>-->
-
-<!--      </td>-->
-
-<!--    </tr>-->
-<!--  </ng-template>-->
-<!--</gm-sticky-table>-->
-
-<!--<p-toast></p-toast>-->
-
-<!--export interface Users {-->
-<!--gmin: string;-->
-<!--firstName: string;-->
-<!--lastName: string;-->
-<!--email: string;-->
-<!--password: string;-->
-<!--companyName: string;-->
-<!--}-->
-
+<!--https://gds-primeng-test.cp-epg3i.gm.com/table/filter-->
+<h5>CRUD Enabled</h5>
 <div class="card">
   <h5>Row Editing</h5>
-  <p-table [value]="usertable" dataKey="gmin" editMode="row" [tableStyle]="{'min-width': '50rem'}">
-    <ng-template pTemplate="header">
-<!--      <tr *ngFor="let column of simpleColumn;let i = index">-->
-<!--        <th [id]="'column-' + i" style="width:20%"> {{column}} </th>-->
+  <p-table #userTable [value]="usertable" dataKey="idx" editMode="row" [tableStyle]="{'min-width': '50rem'}" [rows]="3" [paginator]="true" [autoLayout]="true"
+           [showCurrentPageReport]="true" [rowsPerPageOptions]="[3,25,50]"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+           class="table-style" [reorderableColumns]="true"
+  >
 
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th style="width:20%">gmin</th>-->
-<!--        <th style="width:20%">FirstName</th>-->
-<!--        <th style="width:20%">lastName</th>-->
-<!--        <th style="width:20%">email</th>-->
-<!--        <th style="width:20%">password</th>-->
-<!--        <th style="width:20%">companyName</th>-->
-<!--        <th style="width:20%"></th>-->
-<!--      </tr>-->
-      <tr>
-        <th *ngFor="let column of simpleColumn; let i = index" [id]="'column-' + i" style="width:20%"> {{column}} </th>
-        <th style="width:20%"></th>
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(userTable)"></button>
+        <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" placeholder="Search keyword" />
+                </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" >
+      <tr >
+        <th *ngFor="let column of simpleColumn; let i = index" field="column" [id]="'column-' + i" style="width:20%" class="header-style"
+        [pSortableColumn]="column">
+          {{column}}
+          <p-columnFilter type="text" field="column" display="menu"></p-columnFilter>
+          <p-sortIcon [field]="column"></p-sortIcon>
+        </th>
+        <th style="width:20%" class="header-style"></th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-user let-editing="editing" let-rowIndex="rowIndex"
     >
-      <tr [pEditableRow]="user" >
-        <td *ngFor="let column of simpleColumn" >
+      <tr [pEditableRow]="user" class="table-row-style" >
+        <td *ngFor="let column of simpleColumn" class="table-cell-style">
           <p-cellEditor>
 
             <ng-template pTemplate="input"  >
@@ -179,5 +58,60 @@
     </ng-template>
   </p-table>
 </div>
+
+
+
+
+
+<h5>row editing CRUD not enabled</h5>
+<p-confirmDialog
+  [style]="{width: '50vw'}"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-outlined"
+  acceptIcon=""
+  rejectIcon=""></p-confirmDialog>
+
+<h5>User Table</h5>
+<app-edit-user></app-edit-user>
+<gm-sticky-table #simpleTable [columns]="userTableColumns"
+                 [reorderableColumns]="true"
+                 [rowsPerPageOptions]="[10 ,25, 50, 100, {showAll: 'All'}]"
+                 [rows]="10"
+                 [value]="usertable"
+                 [checkBoxColumn]=false
+                 [actionColumn]=true
+                 actionColumnWidth="12.75rem"
+                 actionColumnHeader="Actions"
+                 emptyMessage="No records found..."
+                 recordStatus="Total Records {totalRecords}"
+                 columnResizeMode="expand">
+
+
+  <ng-template let-rowData let-columns="columns" let-rowIndex="rowIndex" let-actionWidth="actionFlexWidth" pTemplate="body">
+    <tr>
+      <td *ngFor="let column of columns" [ngStyle]="{flex: column.flexWidth}" gmColumnFrozen [id]="column.id"
+          [alignFrozen]="column.alignFrozen" [frozen]="column.frozen">
+        <span class="p-column-title">{{column.mobileHeader}}</span>
+        <span [id]="'table-cell-' + column.id + '-' + rowIndex">{{getField(rowData,column.fields[0])}}</span>
+      </td>
+
+      <td gmColumnFrozen alignFrozen="right" [ngStyle]="{flex: actionWidth}">
+
+        <p-button gmAction [id]="'table-edit-button-' + rowIndex" icon="pi pi-pencil" title="Edit" (click)="onEditUserRow(rowData)"></p-button>
+
+        <p-button gmAction [id]="'table-delete-button-' + rowIndex" icon="pi pi-trash" title="Delete" styleClass="p-button-danger"  (onClick)="onUserDelete(rowData)"></p-button>
+
+        <p-button gmAction ></p-button>
+      </td>
+
+    </tr>
+  </ng-template>
+</gm-sticky-table>
+<p-toast></p-toast>
+
+
+
+
+
 
 

@@ -17,12 +17,14 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {UsersService} from '../shared/services/users.service';
 import {EditUserComponent} from './edit-user/edit-user.component';
 import {UsersComponent} from './users.component';
+import { RowEditingComponent } from './row-editing/row-editing.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
     EditUserComponent,
+    RowEditingComponent,
   ],
   imports: [
     GmStickyTreeTableModule,
